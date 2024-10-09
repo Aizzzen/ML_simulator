@@ -3,10 +3,11 @@ from scipy import stats
 
 
 def ttest(
-    control: List[float], 
-    experiment: List[float], 
+    control: List[float],
+    experiment: List[float],
     alpha: float = 0.05
 ) -> Tuple[float, bool]:
-    t_statistic, p_value = stats.ttest_ind(control, experiment)
+    """Two-sample t-test for the means of two independent samples"""
+    _, p_value = stats.ttest_ind(control, experiment)
     result = p_value < alpha
     return p_value, bool(result)
